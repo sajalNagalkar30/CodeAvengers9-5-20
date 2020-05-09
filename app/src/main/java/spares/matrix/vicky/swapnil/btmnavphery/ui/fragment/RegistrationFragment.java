@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 import androidx.appcompat.widget.Toolbar;
@@ -31,6 +32,7 @@ public class RegistrationFragment extends Fragment {
 
     private EditText nameInput1, emailInput1, phoneInput1, passwordInput1;
     Button regBtn;
+            TextView logbtn;
     Toolbar toolbar_log1;
 
     public RegistrationFragment() {
@@ -47,7 +49,7 @@ public class RegistrationFragment extends Fragment {
         emailInput1 = view.findViewById(R.id.emailInput);
         phoneInput1 = view.findViewById(R.id.phoneInput);
         passwordInput1 = view.findViewById(R.id.passwordInput2);
-
+logbtn=view.findViewById(R.id.login);
         toolbar_log1=view.findViewById(R.id.toolbarfor_log);
         toolbar_log1.setNavigationIcon(R.drawable.ic_back_main_all);
         toolbar_log1.setNavigationOnClickListener(new View.OnClickListener() {
@@ -67,6 +69,19 @@ public class RegistrationFragment extends Fragment {
             public void onClick(View view) {
                 registerUser();
                 Log.e("reg button", "clicked");
+
+
+            }
+        });
+        logbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction
+                        .replace(R.id.fragment_container, new LoginFragment())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
         return view;
@@ -101,6 +116,12 @@ public class RegistrationFragment extends Fragment {
                         phoneInput1.setText("");
                         passwordInput1.setText("");
                         MainActivity.appPreference.showToast("Registered Successfully");
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction
+                                .replace(R.id.fragment_container, new LoginFragment())
+                                .addToBackStack(null)
+                                .commit();
                     } else if (response.body().getResponse().equals("exists")){
                         MainActivity.appPreference.showToast("This email already exists");
                     } else if (response.body().getResponse().equals("error")){

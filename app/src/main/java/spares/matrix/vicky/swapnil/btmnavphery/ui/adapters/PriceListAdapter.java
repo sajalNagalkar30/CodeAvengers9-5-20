@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -32,7 +33,7 @@ public class PriceListAdapter extends RecyclerView.Adapter<PriceListAdapter.Vert
 
     public static class VerticalViewHolder extends RecyclerView.ViewHolder{
 
-        LinearLayout verticalLayout;
+        CardView verticalLayout;
         TextView regularTitle;
         TextView regularPrice;
         ImageView regularImage1;
@@ -41,7 +42,7 @@ public class PriceListAdapter extends RecyclerView.Adapter<PriceListAdapter.Vert
         public VerticalViewHolder(View itemView) {
             super(itemView);
 
-            verticalLayout = itemView.findViewById(R.id.vertical_parent_layout);
+
             regularTitle = itemView.findViewById(R.id.id_title_sbi);
             regularImage1 = itemView.findViewById(R.id.img);
             regularPrice = itemView.findViewById(R.id.sbi_dis);

@@ -10,9 +10,6 @@ public class GeneralFood {
     @SerializedName("category")
     @Expose
     private String category;
-    @SerializedName("subCategory")
-    @Expose
-    private Object subCategory;
     @SerializedName("productName")
     @Expose
     private String productName;
@@ -22,6 +19,8 @@ public class GeneralFood {
     @SerializedName("productPrice")
     @Expose
     private String productPrice;
+
+    private Integer count=1;
     @SerializedName("productPriceBeforeDiscount")
     @Expose
     private String productPriceBeforeDiscount;
@@ -66,14 +65,6 @@ public class GeneralFood {
         this.category = category;
     }
 
-    public Object getSubCategory() {
-        return subCategory;
-    }
-
-    public void setSubCategory(Object subCategory) {
-        this.subCategory = subCategory;
-    }
-
     public String getProductName() {
         return productName;
     }
@@ -96,6 +87,14 @@ public class GeneralFood {
 
     public void setProductPrice(String productPrice) {
         this.productPrice = productPrice;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
     public String getProductPriceBeforeDiscount() {
@@ -169,4 +168,5 @@ public class GeneralFood {
     public void setFilepath(String filepath) {
         this.filepath = filepath;
     }
+
 }

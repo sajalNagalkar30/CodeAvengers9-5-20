@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+
+    android:padding="4dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <TextView
+
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="hello"
+        android:textSize="20dp"
+        android:background="@drawable/cartcategory"
+        android:textColor="#0C0303"
+        android:paddingLeft="10dp"
+        android:gravity="center"
+        android:id="@+id/cart_category"
+        />
+    <!-- <TextView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:text="hello"
+         android:textSize="20dp"
+         android:paddingLeft="10dp"
+         android:gravity="end"
+
+         android:id="@+id/cart_category_count"
+         android:paddingRight="10dp" />-->
+
+
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

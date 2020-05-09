@@ -52,6 +52,7 @@ import spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.Notifications;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.OffersFragment;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.MyOrder;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.categorystore.Fruits;
+import spares.matrix.vicky.swapnil.btmnavphery.ui.model.GeneralFood;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.services.RetrofitClient;
 
 import static spares.matrix.vicky.swapnil.btmnavphery.ui.activites.MainActivity.appPreference;
@@ -61,6 +62,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private AppBarConfiguration mAppBarConfiguration;
     BasketFragment basketFragment;
     HomeFragment home1;
+
     CategoryFragment category1;
     MyOrder myOrder;
     OffersFragment offersFragment;
@@ -101,7 +103,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_sort);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Pherywala");
+
 
         namehel = findViewById(R.id.name1);
         String Name = "Hello, " + MainActivity.appPreference.getDisplayName();

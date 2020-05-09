@@ -78,8 +78,8 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.ViewHo
             sub1 = v.findViewById(R.id.bt1);
             disp = v.findViewById(R.id.tex1);
 
-            tableLayout = v.findViewById(R.id.table1);
-            linearLayout = v.findViewById(R.id.layoutL12);
+
+
             buttond.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -66,7 +66,7 @@ public class Vegetable extends Fragment  {
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
     ArrayList<HashMap<String, String>> arrayListNews;
-    public static List<GeneralFood> cartFoods = new ArrayList<>();
+
 
     FlipperLayout flipperLayout;
     Toolbar toolbar1;
@@ -125,6 +125,7 @@ public class Vegetable extends Fragment  {
                 List<GeneralFood> regularFoods = response.body().getVegetables();
                 mRecyclerview.setNestedScrollingEnabled(false);
                 mRecyclerview.setAdapter(new VerticalAdapter(regularFoods, R.layout.data_content, getContext()));
+
             }
 
             @Override

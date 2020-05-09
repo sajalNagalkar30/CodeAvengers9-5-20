@@ -5,22 +5,126 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import spares.matrix.vicky.swapnil.btmnavphery.R;
+import spares.matrix.vicky.swapnil.btmnavphery.ui.adapters.CartAdapter;
+import spares.matrix.vicky.swapnil.btmnavphery.ui.model.GeneralFood;
+
+
+
 
 public class BasketFragment extends Fragment {
+    RecyclerView recyclerviewCart;
+    public static TextView cartPrice;
+    public static Map<String, List<GeneralFood>> map1 = new HashMap<>();//This is one instance of the  map you want to store in the above list.
 
-    public static BasketFragment newInstance() {
+    public static List<GeneralFood> cartFoods = new ArrayList<>();
+
+    public static BasketFragment newInstance()
+    {
         return new BasketFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.basket_fragment, container, false);
+
+
+        View v=inflater.inflate(R.layout.basket_fragment, container, false);
+
+
+
+
+        cartPrice = v.findViewById(R.id.cart_price);
+        cartPrice.setText(Double.toString(grandTotal(cartFoods)));
+        /*cartPrice.setText("0");*/
+        recyclerviewCart =v. findViewById(R.id.cart_recyclerview);
+       LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+      recyclerviewCart.setLayoutManager(linearLayoutManager);
+        recyclerviewCart.setNestedScrollingEnabled(false);
+        recyclerviewCart.setAdapter(new CartAdapter(map1, R.layout.data_cart, getContext()));
+
+        return v;
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+      /*  if (id == R.id.order_button){
+            Intent intent = new Intent(CartActivity.this, OrderActivity.class);
+            startActivity(intent);
+        }*/
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public static int grandTotal(List<GeneralFood> cartFoods){
+
+
+        int totalPrice = 0;
+        for(int i = 0 ; i < cartFoods.size(); i++) {
+            int p= Integer.parseInt(cartFoods.get(i).getProductPrice());
+            int c=cartFoods.get(i).getCount();
+            //      Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+            totalPrice +=p*c;
+        }
+        return totalPrice;
+
+    }
+
+/*    public static int updateValue(List< GeneralFood> cartFoods,int s)
+    {
+        for(int i = 0 ; i < cartFoods.size(); i++) {
+            int s= Integer.parseInt(cartFoods.get(i).getProductPrice());
+            totalPrice += s;
+        }
+    return totalPrice;
+    }*/
+
+    public static void priceAdjust(){
+        cartPrice.setText(String.valueOf(grandTotal(cartFoods)));
+    }
+
+    public static boolean checkList(List< GeneralFood> cartFoods,GeneralFood item)
+    {
+        boolean b=false;
+        if(cartFoods.contains(item)){
+            b=true;
+        }
+        else
+        {
+            b=false;
+        }
+        return b;
+    }
+    public static boolean checkMap(Map<String, List<GeneralFood>> map1, String itemId){
+
+        boolean c=false;
+        if(map1.containsKey(itemId)){
+            c=true;
+        }
+        else
+        {
+            c=false;
+        }
+        return c;
     }
 }

@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="170dp"
+    android:layout_height="135dp"
+    android:layout_margin="5dp"
+
+    app:cardBackgroundColor="@color/colorPrimaryDark"
+    app:cardCornerRadius="10dp"
    >
 
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="150dp"
+    <!--<androidx.cardview.widget.CardView
+        android:layout_width="170dp"
         android:layout_height="140dp"
         android:layout_margin="10dp"
         app:cardBackgroundColor="@color/colorPrimaryDark"
@@ -16,13 +20,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent">-->
 
-        <GridLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:columnCount="2"
-            android:orientation="vertical">
+
+            android:layout_height="wrap_content">
+
+
+
 
             <ImageView
                 android:id="@+id/img"
@@ -30,6 +36,10 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
+                app:layout_constraintBottom_toTopOf="@id/credit_debit_sbi"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
@@ -39,7 +49,11 @@
                 android:gravity="center"
                 android:text="Credit and debit card"
                 android:textColor="#2F3232"
-                android:textSize="8sp" />
+                android:textSize="8sp"
+                app:layout_constraintBottom_toTopOf="@id/id_title_sbi"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img" />
 
             <TextView
                 android:id="@+id/id_title_sbi"
@@ -49,7 +63,11 @@
                 android:text="Instatnt Discount"
                 android:textColor="#000"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/sbi_dis"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/credit_debit_sbi" />
 
             <TextView
                 android:id="@+id/sbi_dis"
@@ -59,7 +77,11 @@
                 android:text="10%"
                 android:textColor="#000"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/shop_title_sbi"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/id_title_sbi" />
 
             <TextView
                 android:id="@+id/shop_title_sbi"
@@ -68,7 +90,11 @@
                 android:gravity="center_horizontal"
                 android:text="Shop for Rs 1000+"
                 android:textColor="#000000"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                app:layout_constraintBottom_toTopOf="@id/cd_sbi"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sbi_dis" />
 
             <TextView
                 android:id="@+id/cd_sbi"
@@ -79,7 +105,11 @@
                 android:padding="2dp"
                 android:text="Code : SBIIN1564"
                 android:textColor="#FFFFFF"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                app:layout_constraintBottom_toTopOf="@id/sbi_cd_validity"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/shop_title_sbi" />
 
             <TextView
                 android:id="@+id/sbi_cd_validity"
@@ -88,8 +118,12 @@
                 android:gravity="center"
                 android:text="Valid only on Wednesday"
                 android:textColor="#000000"
-                android:textSize="8sp" />
-        </GridLayout>
-    </androidx.cardview.widget.CardView>
+                android:textSize="8sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cd_sbi" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

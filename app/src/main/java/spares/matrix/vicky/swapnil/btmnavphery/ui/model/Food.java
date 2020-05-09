@@ -13,12 +13,7 @@ public class Food {
     @SerializedName("message")
     @Expose
     private String message;
-    @SerializedName("vegetables_count")
-    @Expose
-    private Integer vegetablesCount;
-    @SerializedName("vegetables")
-    @Expose
-    private List<GeneralFood> vegetables = null;
+
 
     @SerializedName("Fruits_count")
     @Expose
@@ -40,7 +35,12 @@ public class Food {
     @SerializedName("Grains")
     @Expose
     private List<GeneralFood> grains = null;
-
+    @SerializedName("Vegetables_count")
+    @Expose
+    private Integer vegetablesCount;
+    @SerializedName("Vegetables")
+    @Expose
+    private List<GeneralFood> vegetables = null;
 
     @SerializedName("Offers_count")
     @Expose
@@ -88,7 +88,6 @@ public class Food {
     public void setVegetables(List<GeneralFood> vegetables) {
         this.vegetables = vegetables;
     }
-
     public Integer getFruitsCount() {
         return fruitsCount;
     }

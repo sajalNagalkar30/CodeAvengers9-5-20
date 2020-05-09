@@ -13,50 +13,47 @@
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="#fff"
+ app:titleMarginStart="80dp"
        app:title="Pherywala"
-        android:layout_marginLeft="-5dp"
+        android:layout_marginLeft="-8dp"
       android:textAlignment="center"
         app:titleTextColor="#EA0E0E"
+
       />
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:layout_marginRight="10dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_marginRight="0dp">
 
-            <ImageView
+        <ImageView
 
-                android:id="@+id/imageView7"
-                android:layout_width="wrap_content"
+            android:id="@+id/imageView7"
+            android:layout_width="wrap_content"
 
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:layout_marginLeft="220dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
 
-                android:src="@drawable/ic_notification"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/person"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:src="@drawable/icon_bell"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/person"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
+        <de.hdodenhof.circleimageview.CircleImageView
 
-                android:id="@+id/person"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
+            android:id="@+id/person"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
 
-                android:padding="15dp"
-                android:src="@drawable/delivery2"
-                app:civ_border_color="#403B3B"
-                app:civ_border_width="1dp"
-                android:layout_marginRight="13dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/imageView7"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+            android:padding="15dp"
+            android:src="@mipmap/ic_launcher_round"
+            app:civ_border_color="#403B3B"
+            app:civ_border_width="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

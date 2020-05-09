@@ -35,7 +35,7 @@ import spares.matrix.vicky.swapnil.btmnavphery.ui.services.MyInterface;
 public class LoginFragment extends Fragment {
 
     private MyInterface loginFromActivityListener;
-    private TextView registerTV;
+    private TextView registerTV1;
 
     private EditText emailInput, passwordInput;
     private Button loginBtn;
@@ -80,11 +80,16 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        registerTV = view.findViewById(R.id.registerTV);
-        registerTV.setOnClickListener(new View.OnClickListener() {
+        registerTV1 = view.findViewById(R.id.registerTV);
+        registerTV1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginFromActivityListener.register();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction
+                        .replace(R.id.fragment_container, new RegistrationFragment())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
         return view;

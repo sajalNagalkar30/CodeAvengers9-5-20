@@ -9,6 +9,8 @@
     android:layout_marginTop="20dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/consteader"
         android:layout_width="match_parent"
@@ -32,7 +34,7 @@
             app:layout_constraintEnd_toStartOf="@id/lin45"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo1" />
+            app:srcCompat="@drawable/logoonly" />
 
         <LinearLayout
             android:id="@+id/lin45"
