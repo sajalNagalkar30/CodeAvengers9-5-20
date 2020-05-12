@@ -37,8 +37,7 @@ import static android.widget.Toast.LENGTH_SHORT;
 import static android.widget.Toast.makeText;
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
-public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.ViewHolder>  {
-
+public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.ViewHolder> {
 
 
     ArrayList<HashMap<String, String>> mArray;
@@ -48,22 +47,21 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.ViewHo
     public TextView textView;
 
 
-
-    public HomeListAdapter(List<GeneralFood> regularFoods, int vertical_recyclerview, Context context){
+    public HomeListAdapter(List<GeneralFood> regularFoods, int vertical_recyclerview, Context context) {
         this.context = context;
         this.regularFoods = regularFoods;
     }
 
 
-    public  static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgBanner;
         TextView txtTitle, txtquantity, txtmrp, txtprice;
         Button buttond;
 
-        Button add1,sub1;
+        Button add1, sub1;
         TableLayout tableLayout;
         TextView disp;
-      //  static int numtest = 1;
+        //  static int numtest = 1;
         LinearLayout linearLayout;
 
         public ViewHolder(View v) {
@@ -77,7 +75,6 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.ViewHo
             add1 = v.findViewById(R.id.bt2);
             sub1 = v.findViewById(R.id.bt1);
             disp = v.findViewById(R.id.tex1);
-
 
 
             buttond.setOnClickListener(new View.OnClickListener() {
@@ -135,12 +132,12 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.ViewHo
         holder.txtTitle.setText(regularFoods.get(position).getProductName());
         holder.txtprice.setText((((regularFoods.get(position).getProductPrice()))) + " Taka");
         holder.txtmrp.setText((((regularFoods.get(position).getProductPriceBeforeDiscount()))) + " Taka");
-      //  Picasso.get().load(regularFoods.get(position).getFilepath()).fit().into(holder.imgBanner);
+        //  Picasso.get().load(regularFoods.get(position).getFilepath()).fit().into(holder.imgBanner);
       /*  Picasso.get().load(dataModelArrayList.get(position).getProductImage1()).into(holder.imgBanner);
         holder.txtTitle.setText(dataModelArrayList.get(position).getProductName());
         holder.txtmrp.setText(dataModelArrayList.get(position).getProductPriceBeforeDiscount());
         holder.txtprice.setText(dataModelArrayList.get(position).getProductPrice());*/
-     //   Picasso.get().load(regularFoods.get(position).getProductImage1()).fit().into(holder.imgBanner);
+        //   Picasso.get().load(regularFoods.get(position).getProductImage1()).fit().into(holder.imgBanner);
     }
 
     @Override
@@ -157,10 +154,8 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.ViewHo
     @Override
     public HomeListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.data_content, parent, false);
-            return new HomeListAdapter.ViewHolder(view);
-
-
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.data_content, parent, false);
+        return new HomeListAdapter.ViewHolder(view);
 
 
     }

@@ -1,7 +1,6 @@
 package spares.matrix.vicky.swapnil.btmnavphery.ui.adapters;
 
 
-
 import android.app.Activity;
 import android.content.Context;
 
@@ -45,7 +44,7 @@ import spares.matrix.vicky.swapnil.btmnavphery.ui.model.Category;
 import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.HomeFragment.drawerLayout;
 
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.VerticalViewHolder>  {
+public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.VerticalViewHolder> {
 
     private List<Category> regularFoods;
     private Context context;
@@ -56,13 +55,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Vertic
 
     Bundle bundle = new Bundle();
 
-
-
-
-
-
-
-    public static class VerticalViewHolder extends RecyclerView.ViewHolder  {
+    public static class VerticalViewHolder extends RecyclerView.ViewHolder {
         ConstraintLayout verticalLayout;
         TextView regularTitle;
         TextView regularPrice;
@@ -83,7 +76,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Vertic
 
     }
 
-    public CategoryAdapter(List<Category> regularFoods, int vertical_recyclerview, Context context){
+    public CategoryAdapter(List<Category> regularFoods, int vertical_recyclerview, Context context) {
         this.context = context;
         this.regularFoods = regularFoods;
     }
@@ -93,15 +86,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Vertic
     public CategoryAdapter.VerticalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.data_category, parent, false);
 
-
-
         return new CategoryAdapter.VerticalViewHolder(view);
     }
 
 
     @Override
     public void onBindViewHolder(@NonNull final CategoryAdapter.VerticalViewHolder holder, final int position) {
-
 
 
         holder.regularTitle.setText(regularFoods.get(position).getTitle());
@@ -116,39 +106,39 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Vertic
             @Override
             public void onClick(View v) {
                 switch (position) {
-                case 2:
+                    case 2:
 
-               change_Fragment(vegetable);
-                Animation developmentv = AnimationUtils.loadAnimation(context, R.anim.custom_animaion);
-                drawerLayout.startAnimation(developmentv);
-                break;
+                        change_Fragment(vegetable);
+                        Animation developmentv = AnimationUtils.loadAnimation(context, R.anim.custom_animaion);
+                        drawerLayout.startAnimation(developmentv);
+                        break;
 
-                case 0:
-                change_Fragment(fruits);
-                Animation developmentv1 = AnimationUtils.loadAnimation(context, R.anim.custom_animaion);
-                drawerLayout.startAnimation(developmentv1);
-                break;
+                    case 0:
+                        change_Fragment(fruits);
+                        Animation developmentv1 = AnimationUtils.loadAnimation(context, R.anim.custom_animaion);
+                        drawerLayout.startAnimation(developmentv1);
+                        break;
 
-                case 1:
-                change_Fragment(grains1);
-                Animation developmentv2 = AnimationUtils.loadAnimation(context, R.anim.custom_animaion);
-                drawerLayout.startAnimation(developmentv2);
-                break;
+                    case 1:
+                        change_Fragment(grains1);
+                        Animation developmentv2 = AnimationUtils.loadAnimation(context, R.anim.custom_animaion);
+                        drawerLayout.startAnimation(developmentv2);
+                        break;
 
-                case 3:
-                change_Fragment(others1);
-                Animation developmentv3 = AnimationUtils.loadAnimation(context, R.anim.custom_animaion);
-                drawerLayout.startAnimation(developmentv3);
-                break;
-                default:
-                break;
+                    case 3:
+                        change_Fragment(others1);
+                        Animation developmentv3 = AnimationUtils.loadAnimation(context, R.anim.custom_animaion);
+                        drawerLayout.startAnimation(developmentv3);
+                        break;
+                    default:
+                        break;
 
-            }
+                }
 
             }
         });
-     //   holder.verticalLayout.setOnClickListener(this);
-       // holder.verticalLayout.setOnClickListener(this);
+        //   holder.verticalLayout.setOnClickListener(this);
+        // holder.verticalLayout.setOnClickListener(this);
           /*  @Override
             public void onClick(View v) {
 
@@ -167,7 +157,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Vertic
     }
 
     void change_Fragment(Fragment fragment) {
-        FragmentTransaction ft =((AppCompatActivity  ) context).getSupportFragmentManager().beginTransaction();
+        FragmentTransaction ft = ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction();
        /* FragmentManager fragmentManager=getFragmentManager();
         FragmentTransaction ft =fragmentManager.beginTransaction();*/
         ft.addToBackStack(null);
@@ -176,5 +166,5 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Vertic
     }
 
 
-        }
+}
 

@@ -31,6 +31,7 @@
                 android:background="@drawable/shapes"
                 android:iconifiedByDefault="false"
                 android:queryBackground="@null"
+                android:focusable="false"
                 android:queryHint="Search"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

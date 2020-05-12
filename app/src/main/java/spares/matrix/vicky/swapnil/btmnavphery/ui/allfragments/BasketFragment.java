@@ -1,10 +1,13 @@
 package spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +19,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationMenu;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,7 +31,9 @@ import spares.matrix.vicky.swapnil.btmnavphery.R;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.adapters.CartAdapter;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.model.GeneralFood;
 
-
+import static android.view.View.GONE;
+import static android.view.View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
 
 
 public class BasketFragment extends Fragment {
@@ -35,33 +43,35 @@ public class BasketFragment extends Fragment {
 
     public static List<GeneralFood> cartFoods = new ArrayList<>();
 
-    public static BasketFragment newInstance()
-    {
+    public static BasketFragment newInstance() {
         return new BasketFragment();
     }
 
+    @SuppressLint("ResourceType")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
 
-        View v=inflater.inflate(R.layout.basket_fragment, container, false);
-
-
-
+        View v = inflater.inflate(R.layout.basket_fragment, container, false);
 
         cartPrice = v.findViewById(R.id.cart_price);
         cartPrice.setText(Double.toString(grandTotal(cartFoods)));
         /*cartPrice.setText("0");*/
-        recyclerviewCart =v. findViewById(R.id.cart_recyclerview);
-       LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-      recyclerviewCart.setLayoutManager(linearLayoutManager);
+        recyclerviewCart = v.findViewById(R.id.cart_recyclerview);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        recyclerviewCart.setLayoutManager(linearLayoutManager);
         recyclerviewCart.setNestedScrollingEnabled(false);
         recyclerviewCart.setAdapter(new CartAdapter(map1, R.layout.data_cart, getContext()));
 
+        if (cartPrice.getText().length()==0)
+        {
+            Toast.makeText(getActivity(), "Changed", Toast.LENGTH_SHORT).show();
+        }
+
+
         return v;
     }
-
 
 
     @Override
@@ -76,16 +86,18 @@ public class BasketFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    public static int grandTotal(List<GeneralFood> cartFoods){
+    public static int grandTotal(List<GeneralFood> cartFoods) {
 
 
         int totalPrice = 0;
-        for(int i = 0 ; i < cartFoods.size(); i++) {
-            int p= Integer.parseInt(cartFoods.get(i).getProductPrice());
-            int c=cartFoods.get(i).getCount();
+        for (int i = 0; i < cartFoods.size(); i++) {
+            int p = Integer.parseInt(cartFoods.get(i).getProductPrice());
+            int c = cartFoods.get(i).getCount();
             //      Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-            totalPrice +=p*c;
+            totalPrice += p * c;
         }
+
+
         return totalPrice;
 
     }
@@ -99,32 +111,20 @@ public class BasketFragment extends Fragment {
     return totalPrice;
     }*/
 
-    public static void priceAdjust(){
+    public static void priceAdjust() {
         cartPrice.setText(String.valueOf(grandTotal(cartFoods)));
     }
 
-    public static boolean checkList(List< GeneralFood> cartFoods,GeneralFood item)
-    {
-        boolean b=false;
-        if(cartFoods.contains(item)){
-            b=true;
-        }
-        else
-        {
-            b=false;
-        }
+    public static boolean checkList(List<GeneralFood> cartFoods, GeneralFood item) {
+        boolean b = false;
+        b = cartFoods.contains(item);
         return b;
     }
-    public static boolean checkMap(Map<String, List<GeneralFood>> map1, String itemId){
 
-        boolean c=false;
-        if(map1.containsKey(itemId)){
-            c=true;
-        }
-        else
-        {
-            c=false;
-        }
+    public static boolean checkMap(Map<String, List<GeneralFood>> map1, String itemId) {
+
+        boolean c = false;
+        c = map1.containsKey(itemId);
         return c;
     }
 }

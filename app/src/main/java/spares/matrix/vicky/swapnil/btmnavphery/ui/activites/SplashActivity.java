@@ -10,29 +10,30 @@ import android.widget.Button;
 import spares.matrix.vicky.swapnil.btmnavphery.R;
 
 public class SplashActivity extends Activity {
-Button button;
+    Button button;
     Handler handler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splashfile);
 
-        handler=new Handler();
+        handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent=new Intent(SplashActivity.this, MainActivity.class);
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
-        },3000);
+        }, 3000);
 
-button=findViewById(R.id.button12);
-button.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        startActivity(new Intent(SplashActivity.this, MainActivity.class));
-    }
-});
+        button = findViewById(R.id.button12);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            }
+        });
     }
 }
