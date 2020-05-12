@@ -64,10 +64,6 @@ public class BasketFragment extends Fragment {
         recyclerviewCart.setNestedScrollingEnabled(false);
         recyclerviewCart.setAdapter(new CartAdapter(map1, R.layout.data_cart, getContext()));
 
-        if (cartPrice.getText().length()==0)
-        {
-            Toast.makeText(getActivity(), "Changed", Toast.LENGTH_SHORT).show();
-        }
 
 
         return v;
