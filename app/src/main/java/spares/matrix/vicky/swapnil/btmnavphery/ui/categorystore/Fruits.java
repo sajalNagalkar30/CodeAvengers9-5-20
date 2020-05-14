@@ -11,22 +11,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,8 +24,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import spares.matrix.vicky.swapnil.btmnavphery.R;
+import spares.matrix.vicky.swapnil.btmnavphery.ui.activites.FilterActivity;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.activites.HomeActivity;
-import spares.matrix.vicky.swapnil.btmnavphery.ui.adapters.HomeListAdapter;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.adapters.VerticalAdapter;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.constants.Constant;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.model.Food;
@@ -59,6 +48,7 @@ public class Fruits extends Fragment {
     ArrayList<HashMap<String, String>> arrayListNews;
 
 
+    Button buttonFilterFruits;
     public static Fruits newInstance() {
         return new Fruits();
     }
@@ -72,6 +62,15 @@ public class Fruits extends Fragment {
         mRecyclerview.setLayoutManager(mLayoutManager);
 fruititemcount=v2.findViewById(R.id.fruit_itemcount);
 
+
+         buttonFilterFruits=v2.findViewById(R.id.btnFilterFruits);
+         buttonFilterFruits.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Intent intent=new Intent(getContext(), FilterActivity.class);
+                 startActivity(intent);
+             }
+         });
         text12=v2.findViewById(R.id.text12);
         flipperLayout2 = v2.findViewById(R.id.flipperfru);
         toolbar1 =v2.findViewById(R.id.toolbar);
@@ -114,6 +113,9 @@ fruititemcount=v2.findViewById(R.id.fruit_itemcount);
 
             }
         });
+
+
+
         return v2;
     }
 

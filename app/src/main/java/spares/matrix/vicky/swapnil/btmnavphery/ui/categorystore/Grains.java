@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -35,6 +36,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import spares.matrix.vicky.swapnil.btmnavphery.R;
+import spares.matrix.vicky.swapnil.btmnavphery.ui.activites.FilterActivity;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.activites.HomeActivity;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.adapters.HomeListAdapter;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.adapters.VerticalAdapter;
@@ -58,6 +60,8 @@ public class Grains extends Fragment {
     ArrayList<HashMap<String, String>> arrayListNews;
 
 
+    Button buttonFilterGrains;
+
     public static Grains newInstance() {
         return new Grains();
     }
@@ -70,6 +74,16 @@ public class Grains extends Fragment {
         mRecyclerview=v1.findViewById(R.id.mRecyclerViewgre);
         mLayoutManager=new LinearLayoutManager(getContext());
         mRecyclerview.setLayoutManager(mLayoutManager);
+
+
+        buttonFilterGrains=v1.findViewById(R.id.btnFilterGrains);
+        buttonFilterGrains.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), FilterActivity.class);
+                startActivity(intent);
+            }
+        });
        // callAPI();
         grainsitemcount=v1.findViewById(R.id.grains_itemcount);
       /*  */

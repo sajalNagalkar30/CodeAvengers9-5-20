@@ -5,8 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#FFF"
     android:id="@+id/filters"
-    tools:context=".ui.allfragments.Filter"
+    tools:context=".ui.activites.FilterActivity"
     android:orientation="vertical">
+
 
     <RadioGroup
         android:id="@+id/filter_rgrp"
@@ -42,7 +43,7 @@
 
     <fragment
         android:id="@+id/output"
-        class="spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.NotifiAlert"
+        class="spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.FilterRefine"
         android:layout_width="match_parent"
         android:layout_height="640dp" />
 
