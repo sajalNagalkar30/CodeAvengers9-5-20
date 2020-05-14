@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -35,6 +36,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import spares.matrix.vicky.swapnil.btmnavphery.R;
+import spares.matrix.vicky.swapnil.btmnavphery.ui.activites.FilterActivity;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.activites.HomeActivity;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.adapters.HomeListAdapter;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.adapters.VerticalAdapter;
@@ -57,6 +59,7 @@ public class Others extends Fragment {
     Toolbar toolbar1;
     ArrayList<HashMap<String, String>> arrayListNews;
 
+    Button buttonFilterOther;
 
     public static Others newInstance() {
         return new Others();
@@ -68,6 +71,16 @@ public class Others extends Fragment {
         View v3=inflater.inflate(R.layout.others_fragment, container, false);
         mRecyclerview=v3.findViewById(R.id.mRecyclerViewothers);
         mLayoutManager=new LinearLayoutManager(getContext());
+
+
+        buttonFilterOther=v3.findViewById(R.id.btnFilterOthers);
+        buttonFilterOther.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), FilterActivity.class);
+                startActivity(intent);
+            }
+        });
         mRecyclerview.setLayoutManager(mLayoutManager);
       //  callAPI();
         text12=v3.findViewById(R.id.text12);

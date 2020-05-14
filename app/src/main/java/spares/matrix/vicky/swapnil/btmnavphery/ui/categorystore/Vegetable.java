@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +46,7 @@ import retrofit2.Retrofit;
 
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 import spares.matrix.vicky.swapnil.btmnavphery.R;
+import spares.matrix.vicky.swapnil.btmnavphery.ui.activites.FilterActivity;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.activites.HomeActivity;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.activites.MainActivity;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.adapters.HomeListAdapter;
@@ -73,6 +75,7 @@ public class Vegetable extends Fragment  {
     public static ServiceApi serviceApi;
     TextView text;
     private HomeListAdapter retrofitAdapter;
+    Button buttonFilterVeg;
 
 
     public static Vegetable newInstance() {
@@ -86,6 +89,14 @@ public class Vegetable extends Fragment  {
 
         mRecyclerview=v.findViewById(R.id.mRecyclerView1);
 
+        buttonFilterVeg=v.findViewById(R.id.btnFilterVeg);
+        buttonFilterVeg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), FilterActivity.class);
+                startActivity(intent);
+            }
+        });
         LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mRecyclerview.setLayoutManager(linearLayoutManager2);
 
@@ -133,6 +144,7 @@ public class Vegetable extends Fragment  {
 
             }
         });
+
 
 
 

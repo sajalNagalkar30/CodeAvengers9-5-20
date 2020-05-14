@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,7 @@ import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
 public class BasketFragment extends Fragment {
     RecyclerView recyclerviewCart;
     public static TextView cartPrice;
+    Button buttonCheckout;
     public static Map<String, List<GeneralFood>> map1 = new HashMap<>();//This is one instance of the  map you want to store in the above list.
 
     public static List<GeneralFood> cartFoods = new ArrayList<>();
@@ -63,7 +65,6 @@ public class BasketFragment extends Fragment {
         recyclerviewCart.setLayoutManager(linearLayoutManager);
         recyclerviewCart.setNestedScrollingEnabled(false);
         recyclerviewCart.setAdapter(new CartAdapter(map1, R.layout.data_cart, getContext()));
-
 
 
         return v;
@@ -106,6 +107,7 @@ public class BasketFragment extends Fragment {
         }
     return totalPrice;
     }*/
+
 
     public static void priceAdjust() {
         cartPrice.setText(String.valueOf(grandTotal(cartFoods)));

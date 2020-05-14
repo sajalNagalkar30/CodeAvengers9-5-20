@@ -2,8 +2,6 @@ package spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -14,10 +12,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import spares.matrix.vicky.swapnil.btmnavphery.R;
 
@@ -27,9 +23,6 @@ public class Notifications extends Fragment
     public Notifications() {
         // Required empty public constructor
     }
-
-    NotifiAlert alert_frag;
-    NotifiOffers offers_frag;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,

@@ -115,55 +115,13 @@ recyclerView=root.findViewById(R.id.mRecyclerViewOfr);
 
     }
 
+
     private void datacome(Integer integer) {
 
 
 
     }
 
-    /*  *//* @Override
-    public void onClick(int position) {
-        switch (position) {
-            case 0:
-                Toast.makeText(getContext(), "Hello ", Toast.LENGTH_SHORT).show();
-              *//**//*  change_Fragment(vegetable);
-                Animation developmentv = AnimationUtils.loadAnimation(getContext(), R.anim.custom_animaion);
-                drawerLayout.startAnimation(developmentv);
-                break;*//**//*
-
-            case 1:
-                change_Fragment(fruits);
-                Animation developmentv1 = AnimationUtils.loadAnimation(getContext(), R.anim.custom_animaion);
-                drawerLayout.startAnimation(developmentv1);
-                break;
-
-            case 2:
-                change_Fragment(grains1);
-                Animation developmentv2 = AnimationUtils.loadAnimation(getContext(), R.anim.custom_animaion);
-                drawerLayout.startAnimation(developmentv2);
-                break;
-
-            case 3:
-                change_Fragment(others1);
-                Animation developmentv3 = AnimationUtils.loadAnimation(getContext(), R.anim.custom_animaion);
-                drawerLayout.startAnimation(developmentv3);
-                break;
-            default:
-                break;
-
-        }*//*
-    }*/
-
-
-
- /*   public static void change_Fragment(Fragment fragment) {
-        FragmentTransaction transaction =((AppCompatActivity)).getSupportFragmentManager().beginTransaction();
-       *//* FragmentManager fragmentManager=getFragmentManager();
-        FragmentTransaction ft =fragmentManager.beginTransaction();*//*
-        ft.addToBackStack(null);
-        ft.add(R.id.homelayout2, fragment);
-        ft.commit();
-    }*/
 
 }
 

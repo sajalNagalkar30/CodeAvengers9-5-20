@@ -15,6 +15,7 @@
             android:id="@+id/rb1"
             android:layout_width="wrap_content"
             android:padding="10dp"
+            android:shadowColor="#E60B0B"
             android:layout_height="wrap_content"
             android:text="Popularity" />
 
