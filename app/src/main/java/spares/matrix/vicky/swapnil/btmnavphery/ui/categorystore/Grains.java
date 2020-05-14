@@ -49,6 +49,7 @@ import technolifestyle.com.imageslider.FlipperView;
 public class Grains extends Fragment {
     public static String description1;
     Toolbar toolbar1;
+    TextView grainsitemcount;
     RecyclerView mRecyclerview;
     RecyclerView.LayoutManager mLayoutManager;
     FlipperLayout flipperLayout1;
@@ -70,6 +71,8 @@ public class Grains extends Fragment {
         mLayoutManager=new LinearLayoutManager(getContext());
         mRecyclerview.setLayoutManager(mLayoutManager);
        // callAPI();
+        grainsitemcount=v1.findViewById(R.id.grains_itemcount);
+      /*  */
         text12=v1.findViewById(R.id.text12);
         toolbar1 =v1.findViewById(R.id.toolbar);
         flipperLayout1 = v1.findViewById(R.id.flippergra);
@@ -82,7 +85,7 @@ public class Grains extends Fragment {
 
         }
 
-        toolbar1.setNavigationIcon(R.drawable.backbtn);
+        toolbar1.setNavigationIcon(R.drawable.button_back_all);
         text12.setText("Grains");
         toolbar1.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +104,8 @@ public class Grains extends Fragment {
                 recyclerViewHorizontal.setAdapter(new HorizontalAdapter(popularFoods, R.layout.recyclerview_horizontal, MainActivity.this));
 */
                 List<GeneralFood> regularFoods = response.body().getGrains();
+                int itemcout=regularFoods.size();
+                grainsitemcount.setText(itemcout+" "+"Items");
                 mRecyclerview.setNestedScrollingEnabled(false);
                 mRecyclerview.setAdapter(new VerticalAdapter(regularFoods, R.layout.data_content, getContext()));
             }

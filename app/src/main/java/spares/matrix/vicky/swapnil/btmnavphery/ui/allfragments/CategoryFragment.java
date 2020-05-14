@@ -66,7 +66,7 @@ public class CategoryFragment extends Fragment  {
         drawerLayout = V1.findViewById(R.id.homelayout2);
 
         recyclerView=V1.findViewById(R.id.mRecyclerViewOfr);
-        toolbar1.setNavigationIcon(R.drawable.backbtn);
+        toolbar1.setNavigationIcon(R.drawable.button_back_all);
         text12.setText("Category");
 toolbar1.setNavigationOnClickListener(new View.OnClickListener() {
     @Override

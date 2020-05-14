@@ -35,12 +35,11 @@ import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFrag
 
 public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.VerticalViewHolder> {
 
-    private List<GeneralFood> regularFoods;
+    public static List<GeneralFood> regularFoods;
     private Context context;
 
 
     public static class VerticalViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
         ImageView imgBanner;
         TextView txtTitle, txtquantity, txtmrp, txtprice;
         Button buttond;
@@ -56,7 +55,6 @@ public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.Vertic
         LinearLayout linearLayout,linearLayout1;
         public VerticalViewHolder(View v) {
             super(v);
-
             imgBanner = v.findViewById(R.id.img1);
             txtTitle = v.findViewById(R.id.textTitle);
             txtquantity = v.findViewById(R.id.textquantity);
@@ -134,7 +132,6 @@ public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.Vertic
                 GeneralFood item = regularFoods.get(position);
 
                 if(!checkList(cartFoods,item)){
-                    Toast.makeText(context, "Item "+regularFoods.get(position).getProductName()+"Added In cart", Toast.LENGTH_SHORT).show();
 
                     if(!checkMap(map1,regularFoods.get(position).getId()))
                     {
@@ -144,14 +141,13 @@ public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.Vertic
                     }
                     else
                     {
-                        Toast.makeText(context, "Item Is already exist", Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(context, "Item Is already exist In Cart", Toast.LENGTH_SHORT).show();
                     }
 
                 }
                 else
                 {
-                    Toast.makeText(context, "Item Is already exist", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Item Is already exist In Cart", Toast.LENGTH_SHORT).show();
                 }
 
             }});
@@ -207,7 +203,8 @@ public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.Vertic
     }*/
 
     @Override
-    public int getItemCount() {
+    public  int getItemCount() {
+
         return regularFoods.size();
     }
 }

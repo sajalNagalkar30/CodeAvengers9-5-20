@@ -1,37 +1,39 @@
 package spares.matrix.vicky.swapnil.btmnavphery.ui.adapters;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
-import android.widget.TextView;
+        import android.content.Context;
+        import android.graphics.Paint;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.Button;
+        import android.widget.ImageButton;
+        import android.widget.ImageView;
+        import android.widget.LinearLayout;
+        import android.widget.TableLayout;
+        import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
+        import androidx.annotation.NonNull;
+        import androidx.cardview.widget.CardView;
+        import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+        import com.bumptech.glide.Glide;
 
-import java.util.List;
-import java.util.Map;
+        import java.util.List;
+        import java.util.Map;
 
-import spares.matrix.vicky.swapnil.btmnavphery.R;
-import spares.matrix.vicky.swapnil.btmnavphery.ui.activites.HomeActivity;
-import spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment;
-import spares.matrix.vicky.swapnil.btmnavphery.ui.categorystore.Vegetable;
-import spares.matrix.vicky.swapnil.btmnavphery.ui.model.GeneralFood;
+        import spares.matrix.vicky.swapnil.btmnavphery.R;
+        import spares.matrix.vicky.swapnil.btmnavphery.ui.activites.HomeActivity;
+        import spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment;
+        import spares.matrix.vicky.swapnil.btmnavphery.ui.categorystore.Vegetable;
+        import spares.matrix.vicky.swapnil.btmnavphery.ui.model.GeneralFood;
 
 
 
-import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.cartFoods;
-import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.grandTotal;
-import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.priceAdjust;
-
+        import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.cartFoods;
+        import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.grandPriviousTotal;
+        import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.grandTotal;
+        import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.priceAdjust;
+        import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.pricePreviousAdjust;
 
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
@@ -61,28 +63,28 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 .load((cartFoods.get(position).getFilepath()))
                 .fitCenter()
                 .into(holder.imgBanner);
-            int cat= Integer.parseInt(cartFoods.get(position).getCategory());
+        int cat= Integer.parseInt(cartFoods.get(position).getCategory());
             /*if(cat==2) {
 
             }*/
-            switch (cat)
-            {
-                case 1:
-                    holder.tcat1.setText("Fruits");
-                    break;
+        switch (cat)
+        {
+            case 1:
+                holder.tcat1.setText("Fruits");
+                break;
 
-                case 2:
-                    holder.tcat1.setText("Vegetable");
-                    break;
+            case 2:
+                holder.tcat1.setText("Vegetable");
+                break;
 
-                case 3:
-                    holder.tcat1.setText("Grains");
-                    break;
+            case 3:
+                holder.tcat1.setText("Grains");
+                break;
 
-                case 4:
-                    holder.tcat1.setText("Other Spices");
-                    break;
-            }
+            case 4:
+                holder.tcat1.setText("Other Spices");
+                break;
+        }
         holder.setListener(new IncreseadapterClicklisner() {
             @Override
             public void onCalculatePrice(View view, int position, boolean isDecrese, boolean isDelete) {
@@ -93,8 +95,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                         if(cartFoods.get(position).getCount() > 1){
                             cartFoods.get(position).setCount(cartFoods.get(position).getCount()-1);
                             holder.disp.setText(String.valueOf(cartFoods.get(position).getCount()));
-
+                             grandPriviousTotal(cartFoods);
                             grandTotal(cartFoods);
+                            pricePreviousAdjust();
                             priceAdjust(); }
 
 
@@ -103,7 +106,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                         if (cartFoods.get(position).getCount() < 99) {
                             cartFoods.get(position).setCount(cartFoods.get(position).getCount() + 1);
                             holder.disp.setText(String.valueOf(cartFoods.get(position).getCount()));
+                            grandPriviousTotal(cartFoods);
                             grandTotal(cartFoods);
+                            pricePreviousAdjust();
                             priceAdjust();
                         }
                     }
@@ -117,8 +122,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                     notifyItemRemoved(position);
 
                     notifyItemRangeChanged(position, cartFoods.size());
-
+                    grandPriviousTotal(cartFoods);
                     grandTotal(cartFoods);
+                    pricePreviousAdjust();
                     priceAdjust();
 
 
@@ -187,7 +193,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                *//* grandTotal(cartFoods);
                 priceAdjust();*//*
 
-               *//* cartUpdate();*//*
+         *//* cartUpdate();*//*
 
 
             }});
@@ -198,9 +204,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     @Override
     public int getItemCount() {
-    if(cartFoods!=null){
-        return cartFoods.size();
-    }
+        if(cartFoods!=null){
+            return cartFoods.size();
+        }
         return 0;
     }
 
@@ -233,16 +239,18 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             txtmrp = itemView.findViewById(R.id.textmrp);
             txtprice = itemView.findViewById(R.id.textprice);
             buttond = itemView.findViewById(R.id.buttondta);
-          //  linearLayout1=itemView.findViewById(R.id.layoutL12);
-tcat1=itemView.findViewById(R.id.cart_category);
+            //  linearLayout1=itemView.findViewById(R.id.layoutL12);
+            tcat1=itemView.findViewById(R.id.cart_category);
 //tcont=itemView.findViewById(R.id.cart_category_count);
             disp=itemView.findViewById(R.id.tex1);
             add1 = itemView.findViewById(R.id.bt2);
             sub1 = itemView.findViewById(R.id.bt1);
             deleteca=itemView.findViewById(R.id.deletecart);
-           // linearLayout = itemView.findViewById(R.id.vertical_parent_layout);
-           // cartParentLayout = itemView.findViewById(R.id.cart_parent_layout);
-          //  cartDelete = itemView.findViewById(R.id.cart_food_delete);
+            txtmrp.setPaintFlags(txtmrp.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
+            // linearLayout = itemView.findViewById(R.id.vertical_parent_layout);
+            // cartParentLayout = itemView.findViewById(R.id.cart_parent_layout);
+            //  cartDelete = itemView.findViewById(R.id.cart_food_delete);
 
             add1.setOnClickListener(this);
             sub1.setOnClickListener(this);

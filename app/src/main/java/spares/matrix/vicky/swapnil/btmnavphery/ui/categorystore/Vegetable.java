@@ -63,6 +63,7 @@ public class Vegetable extends Fragment  {
     ImageButton back;
     public static String description1;
     RecyclerView mRecyclerview;
+    TextView vegeCount;
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
     ArrayList<HashMap<String, String>> arrayListNews;
@@ -73,7 +74,7 @@ public class Vegetable extends Fragment  {
     public static ServiceApi serviceApi;
     TextView text;
     private HomeListAdapter retrofitAdapter;
-
+    public static int itemcout;
 
     public static Vegetable newInstance() {
         return new Vegetable();
@@ -91,6 +92,7 @@ public class Vegetable extends Fragment  {
 
       //  back=v.findViewById(R.id.backbutton);
       text12=v.findViewById(R.id.text12);
+      vegeCount=v.findViewById(R.id.VegeitemCount);
         toolbar1 =v.findViewById(R.id.toolbar);
         flipperLayout = v.findViewById(R.id.flipperveg);
 
@@ -103,7 +105,7 @@ public class Vegetable extends Fragment  {
 
         }
 
-        toolbar1.setNavigationIcon(R.drawable.backbtn);
+        toolbar1.setNavigationIcon(R.drawable.button_back_all);
        text12.setText("Vegetables");
         toolbar1.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +125,9 @@ public class Vegetable extends Fragment  {
                 recyclerViewHorizontal.setAdapter(new HorizontalAdapter(popularFoods, R.layout.recyclerview_horizontal, MainActivity.this));
 */
                 List<GeneralFood> regularFoods = response.body().getVegetables();
+                itemcout=regularFoods.size();
+                vegeCount.setText(itemcout+" "+"Items");
+
                 mRecyclerview.setNestedScrollingEnabled(false);
                 mRecyclerview.setAdapter(new VerticalAdapter(regularFoods, R.layout.data_content, getContext()));
 

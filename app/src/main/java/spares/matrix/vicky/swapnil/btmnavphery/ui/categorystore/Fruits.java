@@ -50,6 +50,7 @@ public class Fruits extends Fragment {
 
     Toolbar toolbar1;
     TextView text12;
+    TextView fruititemcount;
     FlipperLayout flipperLayout2;
     public static String description1;
     RecyclerView mRecyclerview;
@@ -69,6 +70,7 @@ public class Fruits extends Fragment {
         mRecyclerview=v2.findViewById(R.id.mRecyclerViewfru);
         mLayoutManager=new LinearLayoutManager(getContext());
         mRecyclerview.setLayoutManager(mLayoutManager);
+fruititemcount=v2.findViewById(R.id.fruit_itemcount);
 
         text12=v2.findViewById(R.id.text12);
         flipperLayout2 = v2.findViewById(R.id.flipperfru);
@@ -83,7 +85,7 @@ public class Fruits extends Fragment {
         }
 
 
-        toolbar1.setNavigationIcon(R.drawable.backbtn);
+        toolbar1.setNavigationIcon(R.drawable.button_back_all);
         text12.setText("Fruits");
         toolbar1.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +103,8 @@ public class Fruits extends Fragment {
                 recyclerViewHorizontal.setAdapter(new HorizontalAdapter(popularFoods, R.layout.recyclerview_horizontal, MainActivity.this));
 */
                 List<GeneralFood> regularFoods = response.body().getFruits();
+                 int itemcout=regularFoods.size();
+                 fruititemcount.setText(itemcout+" "+"Items");
                 mRecyclerview.setNestedScrollingEnabled(false);
                 mRecyclerview.setAdapter(new VerticalAdapter(regularFoods, R.layout.data_content, getContext()));
             }

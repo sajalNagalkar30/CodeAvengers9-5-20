@@ -53,6 +53,7 @@ public class Others extends Fragment {
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
     TextView text12;
+    TextView otheritemcount;
     FlipperLayout flipperLayout;
     Toolbar toolbar1;
     ArrayList<HashMap<String, String>> arrayListNews;
@@ -70,6 +71,8 @@ public class Others extends Fragment {
         mLayoutManager=new LinearLayoutManager(getContext());
         mRecyclerview.setLayoutManager(mLayoutManager);
       //  callAPI();
+        otheritemcount=v3.findViewById(R.id.other_itemcount);
+       /* */
         text12=v3.findViewById(R.id.text12);
         toolbar1 =v3.findViewById(R.id.toolbar);
         flipperLayout = v3.findViewById(R.id.flipperoth);
@@ -83,7 +86,7 @@ public class Others extends Fragment {
         }
 
 
-        toolbar1.setNavigationIcon(R.drawable.backbtn);
+        toolbar1.setNavigationIcon(R.drawable.button_back_all);
         text12.setText("Others");
         toolbar1.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +104,8 @@ public class Others extends Fragment {
                 recyclerViewHorizontal.setAdapter(new HorizontalAdapter(popularFoods, R.layout.recyclerview_horizontal, MainActivity.this));
 */
                 List<GeneralFood> regularFoods = response.body().getSpices();
+                int itemcout=regularFoods.size();
+                otheritemcount.setText(itemcout+" "+"Items");
                 mRecyclerview.setNestedScrollingEnabled(false);
                 mRecyclerview.setAdapter(new VerticalAdapter(regularFoods, R.layout.data_content, getContext()));
             }

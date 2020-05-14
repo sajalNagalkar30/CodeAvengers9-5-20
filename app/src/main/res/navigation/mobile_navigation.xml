@@ -59,5 +59,10 @@
         android:name="spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.MyOrder"
         android:label="Order"
         tools:layout="@layout/my_order_fragment" />
+    <fragment
+        android:id="@+id/checkOutFragment"
+        android:name="spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.CheckOutFragment"
+        android:label="CheckOut"
+        tools:layout="@layout/fragment_check_out" />
 
 </navigation>
