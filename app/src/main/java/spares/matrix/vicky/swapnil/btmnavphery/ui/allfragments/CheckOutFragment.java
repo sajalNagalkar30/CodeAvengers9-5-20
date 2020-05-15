@@ -40,7 +40,7 @@ public class CheckOutFragment extends Fragment {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_check_out, container, false);
         toolbar1 =v.findViewById(R.id.toolbar);
-        text12=v.findViewById(R.id.text12);
+       // text12=v.findViewById(R.id.text12);
         subcheck=v.findViewById(R.id.subtotal_price);
         savemoneych=v.findViewById(R.id.checkSavedMoney);
         priceTotalch=v.findViewById(R.id.priceTotal);
@@ -56,7 +56,7 @@ public class CheckOutFragment extends Fragment {
         check_price.setText(Double.toString(grandTotal(cartFoods)));
 
         toolbar1.setNavigationIcon(R.drawable.button_back_all);
-        text12.setText("Checkout");
+        toolbar1.setTitle("Checkout");
         toolbar1.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

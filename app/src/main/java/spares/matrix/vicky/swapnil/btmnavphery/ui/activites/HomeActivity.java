@@ -1,6 +1,7 @@
 package spares.matrix.vicky.swapnil.btmnavphery.ui.activites;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -9,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -200,6 +202,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         expandableListView.setAdapter(listAdapter);
 
+
     }
 
 
@@ -251,9 +254,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        DrawerLayout drawer1 = (DrawerLayout) findViewById(R.id.drawer);
+        if (drawer1.isDrawerOpen(GravityCompat.START)) {
+            drawer1.closeDrawer(GravityCompat.START);
 
         } else {
             super.onBackPressed();
@@ -285,11 +288,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void change_Fragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction3 = fragmentManager.beginTransaction();
-        fragmentTransaction3.setCustomAnimations(R.anim.side_in_left, R.anim.side_out_left, R.anim.side_in_left, R.anim.side_out_left);
-        fragmentTransaction3.addToBackStack(null);
-        fragmentTransaction3.replace(R.id.nav_host_fragment, fragment).commit();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+       /* FragmentManager fragmentManager=getFragmentManager();
+        FragmentTransaction ft =fragmentManager.beginTransaction();*/
+        ft.addToBackStack(null);
+        ft.add(R.id.nav_host_fragment, fragment);
+        ft.commit();
 
     }
 

@@ -2,8 +2,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="170dp"
-    android:layout_height="135dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="5dp"
 
     app:cardBackgroundColor="@color/colorPrimaryDark"
@@ -50,13 +50,13 @@
                 android:text="Credit and debit card"
                 android:textColor="#2F3232"
                 android:textSize="8sp"
-                app:layout_constraintBottom_toTopOf="@id/id_title_sbi"
+                app:layout_constraintBottom_toTopOf="@id/instant"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/img" />
 
             <TextView
-                android:id="@+id/id_title_sbi"
+                android:id="@+id/instant"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -64,13 +64,13 @@
                 android:textColor="#000"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@id/sbi_dis"
+                app:layout_constraintBottom_toTopOf="@id/discount_b"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/credit_debit_sbi" />
 
             <TextView
-                android:id="@+id/sbi_dis"
+                android:id="@+id/discount_b"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -78,26 +78,26 @@
                 android:textColor="#000"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@id/shop_title_sbi"
+                app:layout_constraintBottom_toTopOf="@id/shop_for"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/id_title_sbi" />
+                app:layout_constraintTop_toBottomOf="@id/instant" />
 
             <TextView
-                android:id="@+id/shop_title_sbi"
+                android:id="@+id/shop_for"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="Shop for Rs 1000+"
                 android:textColor="#000000"
                 android:textSize="10sp"
-                app:layout_constraintBottom_toTopOf="@id/cd_sbi"
+                app:layout_constraintBottom_toTopOf="@id/codefor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/sbi_dis" />
+                app:layout_constraintTop_toBottomOf="@id/discount_b" />
 
             <TextView
-                android:id="@+id/cd_sbi"
+                android:id="@+id/codefor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#168A41"
@@ -106,23 +106,34 @@
                 android:text="Code : SBIIN1564"
                 android:textColor="#FFFFFF"
                 android:textSize="10sp"
-                app:layout_constraintBottom_toTopOf="@id/sbi_cd_validity"
+                app:layout_constraintBottom_toTopOf="@id/validityof"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/shop_title_sbi" />
+                app:layout_constraintTop_toBottomOf="@id/shop_for" />
 
             <TextView
-                android:id="@+id/sbi_cd_validity"
+                android:id="@+id/validityof"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Valid only on Wednesday"
                 android:textColor="#000000"
                 android:textSize="8sp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cd_sbi" />
+              app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/codefor" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="T c"
+                android:textColor="#000"
+                android:textSize="4sp"
+                android:gravity="end"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/codefor"
+            android:id="@+id/tc"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

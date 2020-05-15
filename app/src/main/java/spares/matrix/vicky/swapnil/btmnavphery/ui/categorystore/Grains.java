@@ -87,7 +87,7 @@ public class Grains extends Fragment {
        // callAPI();
         grainsitemcount=v1.findViewById(R.id.grains_itemcount);
       /*  */
-        text12=v1.findViewById(R.id.text12);
+       // text12=v1.findViewById(R.id.text12);
         toolbar1 =v1.findViewById(R.id.toolbar);
         flipperLayout1 = v1.findViewById(R.id.flippergra);
       int imagesDrawable1[] = {R.drawable.grains1, R.drawable.grains2};
@@ -100,7 +100,9 @@ public class Grains extends Fragment {
         }
 
         toolbar1.setNavigationIcon(R.drawable.button_back_all);
-        text12.setText("Grains");
+        toolbar1.setTitle("Grains");
+
+        //text12.setText("");
         toolbar1.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

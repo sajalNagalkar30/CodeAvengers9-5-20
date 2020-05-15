@@ -36,6 +36,7 @@ public class PriceListAdapter extends RecyclerView.Adapter<PriceListAdapter.Vert
         CardView verticalLayout;
         TextView regularTitle;
         TextView regularPrice;
+        TextView credit_debittxt,instatdis,disco,shop_fordi,codedi,valid,termc;
         ImageView regularImage1;
         Button regularPlus;
 
@@ -43,9 +44,15 @@ public class PriceListAdapter extends RecyclerView.Adapter<PriceListAdapter.Vert
             super(itemView);
 
 
-            regularTitle = itemView.findViewById(R.id.id_title_sbi);
+
             regularImage1 = itemView.findViewById(R.id.img);
-            regularPrice = itemView.findViewById(R.id.sbi_dis);
+            disco = itemView.findViewById(R.id.discount_b);
+            credit_debittxt=itemView.findViewById(R.id.credit_debit_sbi);
+            instatdis=itemView.findViewById(R.id.instant);
+            shop_fordi=itemView.findViewById(R.id.shop_for);
+            codedi=itemView.findViewById(R.id.codefor);
+            valid=itemView.findViewById(R.id.validityof);
+            termc=itemView.findViewById(R.id.tc);
             //   regularPlus = itemView.findViewById(R.id.cd_sbi);
 
         }
@@ -65,8 +72,13 @@ public class PriceListAdapter extends RecyclerView.Adapter<PriceListAdapter.Vert
 
     @Override
     public void onBindViewHolder(@NonNull final PriceListAdapter.VerticalViewHolder holder, final int position) {
-        holder.regularTitle.setText(regularFoods.get(position).getInstant());
-        holder.regularPrice.setText((((regularFoods.get(position).getDiscount()))) + " Taka");
+        holder.instatdis.setText(regularFoods.get(position).getInstant());
+        holder.disco.setText((((regularFoods.get(position).getDiscount()))));
+        holder.credit_debittxt.setText(regularFoods.get(position).getCard());
+        holder.shop_fordi.setText(regularFoods.get(position).getShop());
+        holder.codedi.setText(regularFoods.get(position).getCode());
+        holder.valid.setText(regularFoods.get(position).getVaild());
+        holder.termc.setText(regularFoods.get(position).getTc());
         Glide.with(context)
                 .load(regularFoods.get(position).getFilepath())
                 .fitCenter()

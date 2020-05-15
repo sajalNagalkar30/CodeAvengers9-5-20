@@ -18,24 +18,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <include
             android:id="@+id/include2"
             layout="@layout/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="5dp"
-            tools:layout_editor_absoluteY="5dp" />
-
+            app:layout_constraintBottom_toTopOf="@id/search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <SearchView
             android:id="@+id/search"
             android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:queryBackground="@null"
+
+            android:layout_marginTop="5dp"
             android:background="@drawable/shapes"
             android:iconifiedByDefault="false"
             android:queryHint="Search"
             android:focusable="false"
+            app:layout_constraintBottom_toTopOf="@id/const12"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/include2">
@@ -46,10 +52,10 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/const12"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
 
-
+app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search">
@@ -60,8 +66,9 @@
                 android:layout_height="wrap_content"
                 app:columnCount="2"
 
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
 
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="parent"

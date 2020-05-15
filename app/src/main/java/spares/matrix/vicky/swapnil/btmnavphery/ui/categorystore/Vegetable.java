@@ -4,6 +4,7 @@ package spares.matrix.vicky.swapnil.btmnavphery.ui.categorystore;
 
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,11 +16,13 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -45,6 +48,7 @@ import retrofit2.Retrofit;
 
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 import spares.matrix.vicky.swapnil.btmnavphery.R;
+import spares.matrix.vicky.swapnil.btmnavphery.ui.activites.FilterActivity;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.activites.HomeActivity;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.activites.MainActivity;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.adapters.HomeListAdapter;
@@ -64,6 +68,8 @@ public class Vegetable extends Fragment  {
     public static String description1;
     RecyclerView mRecyclerview;
     TextView vegeCount;
+
+    Button filter;
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
     ArrayList<HashMap<String, String>> arrayListNews;
@@ -86,12 +92,19 @@ public class Vegetable extends Fragment  {
         View v=inflater.inflate(R.layout.vegetable_fragment, container, false);
 
         mRecyclerview=v.findViewById(R.id.mRecyclerView1);
+filter=v.findViewById(R.id.btnFilterVeg);
 
+filter.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        startActivity(new Intent(getContext(), FilterActivity.class));
+    }
+});
         LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mRecyclerview.setLayoutManager(linearLayoutManager2);
 
       //  back=v.findViewById(R.id.backbutton);
-      text12=v.findViewById(R.id.text12);
+      //text12=v.findViewById(R.id.text12);
       vegeCount=v.findViewById(R.id.VegeitemCount);
         toolbar1 =v.findViewById(R.id.toolbar);
         flipperLayout = v.findViewById(R.id.flipperveg);
@@ -106,11 +119,16 @@ public class Vegetable extends Fragment  {
         }
 
         toolbar1.setNavigationIcon(R.drawable.button_back_all);
-       text12.setText("Vegetables");
+        toolbar1.setTitle("Vegetable");
+        toolbar1.setTitleTextColor(Color.WHITE);
+
+        // text12.setText("Vegetables");
         toolbar1.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), HomeActivity.class));
+
+                getActivity().onBackPressed();
+                //  startActivity(new Intent(getContext(), HomeActivity.class));
             }
         });
 

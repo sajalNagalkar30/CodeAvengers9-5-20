@@ -22,9 +22,7 @@ package spares.matrix.vicky.swapnil.btmnavphery.ui.adapters;
         import java.util.Map;
 
         import spares.matrix.vicky.swapnil.btmnavphery.R;
-        import spares.matrix.vicky.swapnil.btmnavphery.ui.activites.HomeActivity;
         import spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment;
-        import spares.matrix.vicky.swapnil.btmnavphery.ui.categorystore.Vegetable;
         import spares.matrix.vicky.swapnil.btmnavphery.ui.model.GeneralFood;
 
 
@@ -32,6 +30,8 @@ package spares.matrix.vicky.swapnil.btmnavphery.ui.adapters;
         import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.cartFoods;
         import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.grandPriviousTotal;
         import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.grandTotal;
+        import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.layoutchanage;
+        import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.map1;
         import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.priceAdjust;
         import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.pricePreviousAdjust;
 
@@ -91,7 +91,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 if(!isDelete)
                 {
                     if(isDecrese)
-                    {
+                    { /*cartFoods.add(regularFoods.get(position));
+                        map1.put(regularFoods.get(position).getId(),cartFoods);*/
                         if(cartFoods.get(position).getCount() > 1){
                             cartFoods.get(position).setCount(cartFoods.get(position).getCount()-1);
                             holder.disp.setText(String.valueOf(cartFoods.get(position).getCount()));
@@ -118,6 +119,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 {
                     GeneralFood item = cartFoods.get(position);
                     cartFoods.remove(item);
+                    map1.remove(item.getId());
                     item.setCount(1);
                     notifyItemRemoved(position);
 
@@ -126,7 +128,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                     grandTotal(cartFoods);
                     pricePreviousAdjust();
                     priceAdjust();
-
+                    layoutchanage(map1);
 
                 }
             }

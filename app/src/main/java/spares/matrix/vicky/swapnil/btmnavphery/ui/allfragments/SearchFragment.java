@@ -237,7 +237,7 @@ public class SearchFragment extends Fragment {
                     }
 
                     // Setup and Handover data to recyclerview
-                    mRVproduct = getActivity().findViewById(R.id.productPriceList);
+                   mRVproduct = getActivity().findViewById(R.id.mRecyclerSearch);
                     mAdapter = new AdapterSearch(getContext(), data);
                     mRVproduct.setAdapter(mAdapter);
                     mRVproduct.setLayoutManager(new LinearLayoutManager(getContext()));

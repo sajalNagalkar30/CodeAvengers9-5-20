@@ -86,7 +86,7 @@ public class Others extends Fragment {
       //  callAPI();
         otheritemcount=v3.findViewById(R.id.other_itemcount);
        /* */
-        text12=v3.findViewById(R.id.text12);
+      //  text12=v3.findViewById(R.id.text12);
         toolbar1 =v3.findViewById(R.id.toolbar);
         flipperLayout = v3.findViewById(R.id.flipperoth);
         int imagesDrawable[] = {R.drawable.spices1, R.drawable.spices2};
@@ -100,7 +100,8 @@ public class Others extends Fragment {
 
 
         toolbar1.setNavigationIcon(R.drawable.button_back_all);
-        text12.setText("Others");
+        toolbar1.setTitle("Others / Spices");
+       // text12.setText("Others");
         toolbar1.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

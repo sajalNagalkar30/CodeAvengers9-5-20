@@ -61,13 +61,14 @@ public class CategoryFragment extends Fragment  {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View V1 = inflater.inflate(R.layout.category_fragment, container, false);
-        text12=V1.findViewById(R.id.text12);
+      //  text12=V1.findViewById(R.id.text12);
         toolbar1 =V1.findViewById(R.id.toolbar);
         drawerLayout = V1.findViewById(R.id.homelayout2);
 
         recyclerView=V1.findViewById(R.id.mRecyclerViewOfr);
         toolbar1.setNavigationIcon(R.drawable.button_back_all);
-        text12.setText("Category");
+        toolbar1.setTitle("Category");
+      //  text12.setText("");
 toolbar1.setNavigationOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {

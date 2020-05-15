@@ -71,7 +71,7 @@ fruititemcount=v2.findViewById(R.id.fruit_itemcount);
                  startActivity(intent);
              }
          });
-        text12=v2.findViewById(R.id.text12);
+      //  text12=v2.findViewById(R.id.text12);
         flipperLayout2 = v2.findViewById(R.id.flipperfru);
         toolbar1 =v2.findViewById(R.id.toolbar);
         int imagesDrawable[] = {R.drawable.image4, R.drawable.fru};
@@ -85,7 +85,8 @@ fruititemcount=v2.findViewById(R.id.fruit_itemcount);
 
 
         toolbar1.setNavigationIcon(R.drawable.button_back_all);
-        text12.setText("Fruits");
+        toolbar1.setTitle("Fruits");
+       // text12.setText("");
         toolbar1.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
