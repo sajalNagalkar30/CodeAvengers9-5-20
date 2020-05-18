@@ -56,6 +56,7 @@ import spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.MyOrder;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.categorystore.Fruits;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.model.GeneralFood;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.services.RetrofitClient;
+import spares.matrix.vicky.swapnil.btmnavphery.ui.services.ServiceApi;
 
 import static spares.matrix.vicky.swapnil.btmnavphery.ui.activites.MainActivity.appPreference;
 
@@ -64,7 +65,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private AppBarConfiguration mAppBarConfiguration;
     BasketFragment basketFragment;
     HomeFragment home1;
-
+    public static ServiceApi serviceApi;
     CategoryFragment category1;
     MyOrder myOrder;
     OffersFragment offersFragment;
@@ -304,6 +305,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         appPreference.setDisplayName("Name");
         appPreference.setDisplayEmail("Email");
         appPreference.setCreDate("DATE");
+        appPreference.setCRId("ID");
 
        Intent intent=new Intent(getApplicationContext(),MainActivity.class);
        startActivity(intent);

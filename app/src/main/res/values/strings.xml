@@ -28,6 +28,7 @@
     <string name="s_pref_file">spares.matrix.vicky.swapnil.btmnavphery.sh_preference_file</string>
     <string name="s_pref_login_status">spares.matrix.vicky.swapnil.sh_preference_login_status</string>
     <string name="s_pref_name">sh_preference_name</string>
+    <string name="s_pref_id">sh_preference_id</string>
     <string name="s_pref_email">sh_preference_email</string>
     <string name="s_pref_date">sh_preference_date</string>
 

@@ -9,26 +9,38 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import spares.matrix.vicky.swapnil.btmnavphery.R;
+import spares.matrix.vicky.swapnil.btmnavphery.ui.activites.MainActivity;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.adapters.CartAdapter;
+import spares.matrix.vicky.swapnil.btmnavphery.ui.constants.Constant;
+import spares.matrix.vicky.swapnil.btmnavphery.ui.model.CartProduct;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.model.GeneralFood;
+import spares.matrix.vicky.swapnil.btmnavphery.ui.services.RetrofitClient;
+import spares.matrix.vicky.swapnil.btmnavphery.ui.services.ServiceApi;
 
 
 public class BasketFragment extends Fragment {
@@ -39,11 +51,14 @@ public class BasketFragment extends Fragment {
     public static Map<String, List<GeneralFood>> map1 = new HashMap<>();//This is one instance of the  map you want to store in the above list.
     Toolbar toolbar1;
     TextView text12;
+    Button getid12;
     Button checkout;
     static ConstraintLayout cartfull;
     static ConstraintLayout cartempty;
     ConstraintLayout constraintLayout;
     public static List<GeneralFood> cartFoods = new ArrayList<>();
+    public static Map<String,String> cartMaps= new HashMap<>();
+
 
     public static BasketFragment newInstance() {
         return new BasketFragment();
@@ -59,6 +74,7 @@ public class BasketFragment extends Fragment {
         toolbar1 =v.findViewById(R.id.toolbar);
         context=getActivity();
         cartfull=v.findViewById(R.id.fullbasket);
+       // getid12=v.findViewById(R.id.getuserid1);
         cartempty=v.findViewById(R.id.empty_basket);
         constraintLayout=v.findViewById(R.id.cartconstraints);
        // text12=v.findViewById(R.id.text12);
@@ -75,6 +91,10 @@ public class BasketFragment extends Fragment {
 
             }
         });
+        final Map<Set<String>, Collection<String>> map12=new HashMap<>();
+        map12.put(cartMaps.keySet(),cartMaps.values());
+
+
         cartPrice = v.findViewById(R.id.cart_price);
         cartPreviousPrice=v.findViewById(R.id.savedmoney);
         checkout=v.findViewById(R.id.checkoutbtn);
@@ -90,21 +110,51 @@ public class BasketFragment extends Fragment {
 checkout.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction
-                .replace(R.id.cartconstraints, new CheckOutFragment())
-                .addToBackStack(null)
-                .commit();
+       doPostofData();
     }
 });
 if(!cartFoods.isEmpty()){
     cartempty.setVisibility(View.GONE);
     cartfull.setVisibility(View.VISIBLE);
 }
-//layoutchanage(cartFoods);
 
         return v;
+    }
+
+    private void doPostofData() {
+        Date currentTime = Calendar.getInstance().getTime();
+//layoutchanage(cartFoods);
+        String user_id=MainActivity.appPreference.getCRId();
+        String payment_method=("COD");
+        String order_date=String.valueOf((currentTime));
+        String product_id= String.valueOf(cartMaps.entrySet());
+     String quantity= (String.valueOf(cartMaps.values()));
+
+
+        ServiceApi retrofitService = RetrofitClient.getApiClient(Constant.baseUrl.BASE_URL).create(ServiceApi.class);
+
+        Call<CartProduct> userpro = retrofitService.dopost1(user_id,payment_method,product_id,quantity);
+
+        userpro.enqueue(new Callback<CartProduct>() {
+            @Override
+            public void onResponse(Call<CartProduct> call, Response<CartProduct> response) {
+                //Toast.makeText(context, ""+response.body().getResponse(), Toast.LENGTH_SHORT).show();
+                if (response.body().getResponse().equals("Inserted")) {
+                    Log.e("response", response.body().getResponse());
+
+                    Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
+                }
+                else if(response.body().getResponse().equals("Try Again")){
+                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+                }
+                //Toast.makeText(context, "hiii", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<CartProduct> call, Throwable t) {
+                Toast.makeText(context, ""+t, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
@@ -172,6 +222,7 @@ if(!cartFoods.isEmpty()){
         return c;
     }
 
+
     public static void layoutchanage(Map<String, List<GeneralFood>> map1){
         if(map1.isEmpty()){
             cartempty.setVisibility(View.VISIBLE);
@@ -179,4 +230,11 @@ if(!cartFoods.isEmpty()){
         }
 
     }
+    public static String senddata(String id, Integer count) {
+        String s=(id+" "+count);
+        return s;
+    }
+
+
+
 }

@@ -2,6 +2,7 @@ package spares.matrix.vicky.swapnil.btmnavphery.ui.adapters;
 
         import android.content.Context;
         import android.graphics.Paint;
+        import android.os.Build;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
@@ -13,6 +14,7 @@ package spares.matrix.vicky.swapnil.btmnavphery.ui.adapters;
         import android.widget.TextView;
 
         import androidx.annotation.NonNull;
+        import androidx.annotation.RequiresApi;
         import androidx.cardview.widget.CardView;
         import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,6 +30,7 @@ package spares.matrix.vicky.swapnil.btmnavphery.ui.adapters;
 
 
         import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.cartFoods;
+        import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.cartMaps;
         import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.grandPriviousTotal;
         import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.grandTotal;
         import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.layoutchanage;
@@ -58,6 +61,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.txtquantity.setText((((cartFoods.get(position).getQuantity()))) );
 
         holder.disp.setText(String.valueOf(cartFoods.get(position).getCount()));
+
         //  Picasso.get().load(regularFoods.get(position).getFilepath()).fit().into(holder.imgBanner);
         Glide.with(context)
                 .load((cartFoods.get(position).getFilepath()))
@@ -85,7 +89,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 holder.tcat1.setText("Other Spices");
                 break;
         }
+        cartMaps.put(cartFoods.get(position).getId(), String.valueOf(cartFoods.get(position).getCount()));
+
         holder.setListener(new IncreseadapterClicklisner() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onCalculatePrice(View view, int position, boolean isDecrese, boolean isDelete) {
                 if(!isDelete)
@@ -96,6 +103,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                         if(cartFoods.get(position).getCount() > 1){
                             cartFoods.get(position).setCount(cartFoods.get(position).getCount()-1);
                             holder.disp.setText(String.valueOf(cartFoods.get(position).getCount()));
+                            cartMaps.put(cartFoods.get(position).getId(), String.valueOf(cartFoods.get(position).getCount()));
                              grandPriviousTotal(cartFoods);
                             grandTotal(cartFoods);
                             pricePreviousAdjust();
@@ -107,6 +115,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                         if (cartFoods.get(position).getCount() < 99) {
                             cartFoods.get(position).setCount(cartFoods.get(position).getCount() + 1);
                             holder.disp.setText(String.valueOf(cartFoods.get(position).getCount()));
+                            cartMaps.put(cartFoods.get(position).getId(), String.valueOf(cartFoods.get(position).getCount()));
+
                             grandPriviousTotal(cartFoods);
                             grandTotal(cartFoods);
                             pricePreviousAdjust();
@@ -120,6 +130,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                     GeneralFood item = cartFoods.get(position);
                     cartFoods.remove(item);
                     map1.remove(item.getId());
+                    cartMaps.remove(item.getId(), String.valueOf(item.getCount()));
+
                     item.setCount(1);
                     notifyItemRemoved(position);
 

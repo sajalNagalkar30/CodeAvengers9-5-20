@@ -119,7 +119,8 @@ public class LoginFragment extends Fragment {
                         loginFromActivityListener.login(
                                 response.body().getName(),
                                 response.body().getEmail(),
-                                response.body().getCreatedAt());
+                                response.body().getCreatedAt(),
+                                response.body().getId());
 
 
                     } else if (response.body().getResponse().equals("login_failed")){

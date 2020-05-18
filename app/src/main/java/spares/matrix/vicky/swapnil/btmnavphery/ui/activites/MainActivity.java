@@ -15,9 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import spares.matrix.vicky.swapnil.btmnavphery.R;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.HomeFragment;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.constants.Constant;
-import spares.matrix.vicky.swapnil.btmnavphery.ui.extras.AppPreference;
-import spares.matrix.vicky.swapnil.btmnavphery.ui.fragment.LoginFragment;
 
+import spares.matrix.vicky.swapnil.btmnavphery.ui.fragment.LoginFragment;
+import spares.matrix.vicky.swapnil.btmnavphery.ui.extras.AppPreference;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.fragment.ProfileFragment;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.fragment.RegistrationFragment;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.fragment.Starting;
@@ -52,13 +52,17 @@ public class MainActivity extends AppCompatActivity implements MyInterface {
             //check login status from sharedPreference
             if (appPreference.getLoginStatus()) {
                 //when true
-             Intent intent=new Intent(getApplicationContext(),HomeActivity.class);
-             startActivity(intent);
+                /*getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.fragment_container, new ProfileFragment())
+                        .commit();*/
+                Intent intent=new Intent(MainActivity.this,HomeActivity.class);
+                startActivity(intent);
             } else {
                 // when get false
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .add(R.id.fragment_container, new Starting())
+                        .add(R.id.fragment_container, new LoginFragment())
                         .commit();
             }
         }
@@ -77,16 +81,16 @@ public class MainActivity extends AppCompatActivity implements MyInterface {
     }
 
     @Override
-    public void login(String name, String email, String created_at) {
+    public void login(String name, String email, String created_at,String id_user) {
         appPreference.setDisplayName(name);
         appPreference.setDisplayEmail(email);
         appPreference.setCreDate(created_at);
+        appPreference.setCRId(id_user);
         homeactivity();
 
     }
 
     private void homeactivity() {
-
         Intent intent=new Intent(MainActivity.this, HomeActivity.class);
         startActivity(intent);
     }
@@ -97,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements MyInterface {
         appPreference.setDisplayName("Name");
         appPreference.setDisplayEmail("Email");
         appPreference.setCreDate("DATE");
+        appPreference.setCRId("ID");
 
         getSupportFragmentManager()
                 .beginTransaction()

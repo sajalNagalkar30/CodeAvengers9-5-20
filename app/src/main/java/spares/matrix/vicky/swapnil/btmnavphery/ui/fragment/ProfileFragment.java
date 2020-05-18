@@ -35,7 +35,21 @@ public class ProfileFragment extends Fragment {
 
 
 
+        name = view.findViewById(R.id.name);
+        String Name = "Hi, " + MainActivity.appPreference.getDisplayName();
+        name.setText(Name);
 
+        email = view.findViewById(R.id.email);
+
+        String Email_cDate = MainActivity.appPreference.getDisplayEmail()
+                +"\n Registered at: " + MainActivity.appPreference.getCreDate()
+                +"\n Id of user :"+MainActivity.appPreference.getCRId();
+        email.setText(Email_cDate);
+        //Log.e("created_at: ", c_date);
+
+
+
+        logoutBtn = view.findViewById(R.id.logoutBtn);
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

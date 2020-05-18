@@ -6,6 +6,13 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class User {
+    public String getId() {
+        return id_user;
+    }
+
+    @SerializedName("id")
+    @Expose
+    private String id_user;
 
     @SerializedName("response")
     @Expose
@@ -70,6 +77,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", created_at='" + created_at + '\'' +
+                ", id_user='" + id_user + '\''+
                 '}';
     }
 }

@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,17 +16,15 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import spares.matrix.vicky.swapnil.btmnavphery.R;
-import spares.matrix.vicky.swapnil.btmnavphery.ui.categorystore.Vegetable;
 import spares.matrix.vicky.swapnil.btmnavphery.ui.model.GeneralFood;
 
 
 import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.cartFoods;
+import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.cartMaps;
 import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.checkList;
 import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.checkMap;
 import static spares.matrix.vicky.swapnil.btmnavphery.ui.allfragments.BasketFragment.map1;
@@ -138,6 +135,9 @@ public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.Vertic
                         Toast.makeText(context, "Item "+regularFoods.get(position).getProductName()+"Added In cart", Toast.LENGTH_SHORT).show();
                         cartFoods.add(regularFoods.get(position));
                         map1.put(regularFoods.get(position).getId(),cartFoods);
+                     //  cartMaps.put(String.valueOf(regularFoods.get(position).getId()),String.valueOf(regularFoods.get(position).getCount()));
+
+
                     }
                     else
                     {
@@ -151,6 +151,7 @@ public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.Vertic
                 }
 
             }});
+
        /*  if(!cartFoods.contains(regularFoods.get(position)))
         {
             holder.c2elg.setVisibility(View.GONE);
@@ -197,6 +198,8 @@ public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.Vertic
 
 
 
+
+
   /*  @Override
     public int getItemCount() {
         return 0;
@@ -207,4 +210,5 @@ public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.Vertic
 
         return regularFoods.size();
     }
+
 }

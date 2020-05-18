@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
-import spares.matrix.vicky.swapnil.btmnavphery.R;
+
 
 import spares.matrix.vicky.swapnil.btmnavphery.R;
 
@@ -63,4 +63,14 @@ public class AppPreference {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 
+    public void setCRId(String id_user) {
+        editor.putString(String.valueOf(R.string.s_pref_id), id_user);
+        editor.commit();
+
+    }
+
+    public String getCRId() {
+        return sharedPreferences.getString(String.valueOf(R.string.s_pref_id), "id");
+
+    }
 }
